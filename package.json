@@ -1,0 +1,11 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "main": "\u001b[D\u001b[D\u001b[D\u001b[D\u001b[x\u001b[C\u001b[C\u001b[C\u001b[C",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
