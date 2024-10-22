@@ -20,11 +20,30 @@ if (!fs.existsSync(options.input)) {
   return console.log;
 }
 
-const dataOutput = "-Expecto Patronum\n-Lily?\n-After all this time?\n-Always";
+const filedata = fs.readFileSync(options.input, 'utf-8');
+const inputData = JSON.parse(filedata);
 
-if (options.output && options.display ) {
-  fs.writeFileSync(options.output, dataOutput);
-  console.log(dataOutput);
-      return;
-  };
+let minAsset = null;
+let minValue = Infinity;
 
+inputData.forEach(asset => {
+  const value = asset.value; 
+  const txt = asset.txt; 
+
+  if (value < minValue) {
+    minValue = value;
+    minAsset = { txt, value }; 
+  }
+});
+
+if (minAsset) {
+    const outputResult = `${minAsset.txt}:${minAsset.value};`
+
+  if (options.display) {
+    console.log(outputResult);
+  }
+
+  if (options.output) {
+    fs.writeFileSync(options.output, outputResult);
+  }
+}
